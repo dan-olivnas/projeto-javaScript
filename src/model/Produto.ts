@@ -2,63 +2,52 @@
 
 export abstract class Produto {
   private _id: number;
-  private _produto: string;
+  private _nome: string;
   private _preco: number;
-  
-constructor(id: number, produto: string, preco: number) {
+  private _quantidade: number;
+
+  constructor(id: number, nome: string, preco: number, quantidade: number) {
     this._id = id;
-    this._produto = produto;
+    this._nome = nome;
+    this._preco = preco;
+    this._quantidade = quantidade;
+  }
+  public get id() {
+    return this._id;
+  }
+
+  public set id(numero: number) {
+    this._id = numero;
+  }
+
+  public get nome() {
+    return this._nome;
+  }
+
+  public set nome(nome: string) {
+    this._nome = nome;
+  }
+
+  public get preco() {
+    return this._preco;
+  }
+
+  public set preco(preco: number) {
     this._preco = preco;
   }
-public get id() {
-  return this._id;
+
+  public get quantidade() {
+    return this._quantidade;
   }
 
-public set id(numero: number) {
-  this._id = numero;
+  public set quantidade(numero: number) {
+    this._quantidade = numero;
   }
 
-public get produto() {
-  return this._produto;
+  public visualizar() : void {
+    console.log(`ID: ${this._id}`);
+    console.log(`Nome: ${this._nome}`);
+    console.log(`Preço unitário: R$ ${this._preco.toFixed(2)}`);
+    console.log(`Quantidade disponível: ${this._quantidade}`);
   }
-
-public set produto(produto: string) {
-  this._produto = produto;
-  }
-
-public get preco() {
-  return this._preco;
-  }
-
-public set preco(preco: number) {
-  this._preco = preco;
-  }
-
-public adicionar(produto){
-    this.produto.push(produto);
-    console.log(`Produto "${produto.nome}" adicionado com sucesso!`);
-  }
-
-}
-  atualizar(id: Id): void {
-    let buscarProduto = this.buscarProduto(id.numero);
-
-    if (buscarProduto != null) {
-      this.buscarProduto[this.buscarProduto.indexOf(buscarProduto)] = conta;
-      console.log("\n O produto ID: " + id + " foi atualizado com sucesso!");
-    } else
-      console.log("\nO produto ID: " + id + " não foi encontrado!");
-  }
-  excluir(numero: number): void {
-    let buscarProduto = this.buscarProduto(numero);
-
-    if (buscarProduto != null) {
-      this.buscarProduto.splice(this.buscarProduto.indexOf(buscarProduto), 1);
-      console.log("\nO produto numero: " + id + " foi excluído com sucesso!");
-    } else {
-      console.log("\nO produdo ID: " + id + " não foi encontrado!",);
-    }
-}
-
-
 }
